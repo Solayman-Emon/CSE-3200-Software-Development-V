@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admin_ID" />
+          </Key>
+          <Property Name="admin_ID" Type="int" Nullable="false" />
+          <Property Name="admin_Name" Type="varchar" MaxLength="255" />
+          <Property Name="service_Type" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Admin_Login">
+          <Key>
+            <PropertyRef Name="admin_ID" />
+          </Key>
+          <Property Name="admin_ID" Type="int" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Couse_Material">
+          <Key>
+            <PropertyRef Name="course_NO" />
+          </Key>
+          <Property Name="course_NO" Type="int" Nullable="false" />
+          <Property Name="course_Title" Type="varchar" MaxLength="255" />
+          <Property Name="credit_Hours" Type="float" />
+          <Property Name="course_Teacher" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Library">
+          <Key>
+            <PropertyRef Name="book_ID" />
+          </Key>
+          <Property Name="book_ID" Type="int" Nullable="false" />
+          <Property Name="book_Title" Type="varchar" MaxLength="255" />
+          <Property Name="book_Category" Type="varchar" MaxLength="255" />
+          <Property Name="available_NO" Type="int" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="course_NO" />
+          </Key>
+          <Property Name="course_NO" Type="int" Nullable="false" />
+          <Property Name="student_ID" Type="int" Nullable="false" />
+          <Property Name="marks" Type="varchar" MaxLength="255" />
+          <Property Name="grade" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="student_ID" />
+          </Key>
+          <Property Name="student_ID" Type="int" Nullable="false" />
+          <Property Name="student_Name" Type="varchar" MaxLength="255" />
+          <Property Name="department" Type="varchar" MaxLength="255" />
+          <Property Name="phone_NO" Type="varchar" MaxLength="255" />
+          <Property Name="blood_Group" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="User_Login">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__Result__student___3E52440B">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Result" Type="Self.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="student_ID" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SMSModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin_Login" EntityType="Self.Admin_Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Couse_Material" EntityType="Self.Couse_Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Library" EntityType="Self.Library" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Login" EntityType="Self.User_Login" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Result__student___3E52440B" Association="Self.FK__Result__student___3E52440B">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Result" EntitySet="Result" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admin_ID" />
+          </Key>
+          <Property Name="admin_ID" Type="Int32" Nullable="false" />
+          <Property Name="admin_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="service_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Admin_Login">
+          <Key>
+            <PropertyRef Name="admin_ID" />
+          </Key>
+          <Property Name="admin_ID" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Couse_Material">
+          <Key>
+            <PropertyRef Name="course_NO" />
+          </Key>
+          <Property Name="course_NO" Type="Int32" Nullable="false" />
+          <Property Name="course_Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="credit_Hours" Type="Double" />
+          <Property Name="course_Teacher" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Library">
+          <Key>
+            <PropertyRef Name="book_ID" />
+          </Key>
+          <Property Name="book_ID" Type="Int32" Nullable="false" />
+          <Property Name="book_Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="book_Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="available_NO" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="course_NO" />
+          </Key>
+          <Property Name="course_NO" Type="Int32" Nullable="false" />
+          <Property Name="student_ID" Type="Int32" Nullable="false" />
+          <Property Name="marks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="grade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Result__student___3E52440B" FromRole="Result" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="student_ID" />
+          </Key>
+          <Property Name="student_ID" Type="Int32" Nullable="false" />
+          <Property Name="student_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="department" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="phone_NO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="blood_Group" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Results" Relationship="Self.FK__Result__student___3E52440B" FromRole="Students" ToRole="Result" />
+        </EntityType>
+        <EntityType Name="User_Login">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Result__student___3E52440B">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="Result" Type="Self.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="student_ID" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="student_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Admin_Login" EntityType="Self.Admin_Login" />
+          <EntitySet Name="Couse_Material" EntityType="Self.Couse_Material" />
+          <EntitySet Name="Libraries" EntityType="Self.Library" />
+          <EntitySet Name="Results" EntityType="Self.Result" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="User_Login" EntityType="Self.User_Login" />
+          <AssociationSet Name="FK__Result__student___3E52440B" Association="Self.FK__Result__student___3E52440B">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SMSModelStoreContainer" CdmEntityContainer="SMSEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="SMSModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="admin_ID" ColumnName="admin_ID" />
+                <ScalarProperty Name="admin_Name" ColumnName="admin_Name" />
+                <ScalarProperty Name="service_Type" ColumnName="service_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin_Login">
+            <EntityTypeMapping TypeName="SMSModel.Admin_Login">
+              <MappingFragment StoreEntitySet="Admin_Login">
+                <ScalarProperty Name="admin_ID" ColumnName="admin_ID" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Couse_Material">
+            <EntityTypeMapping TypeName="SMSModel.Couse_Material">
+              <MappingFragment StoreEntitySet="Couse_Material">
+                <ScalarProperty Name="course_NO" ColumnName="course_NO" />
+                <ScalarProperty Name="course_Title" ColumnName="course_Title" />
+                <ScalarProperty Name="credit_Hours" ColumnName="credit_Hours" />
+                <ScalarProperty Name="course_Teacher" ColumnName="course_Teacher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Libraries">
+            <EntityTypeMapping TypeName="SMSModel.Library">
+              <MappingFragment StoreEntitySet="Library">
+                <ScalarProperty Name="book_ID" ColumnName="book_ID" />
+                <ScalarProperty Name="book_Title" ColumnName="book_Title" />
+                <ScalarProperty Name="book_Category" ColumnName="book_Category" />
+                <ScalarProperty Name="available_NO" ColumnName="available_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="SMSModel.Result">
+              <MappingFragment StoreEntitySet="Result">
+                <ScalarProperty Name="course_NO" ColumnName="course_NO" />
+                <ScalarProperty Name="student_ID" ColumnName="student_ID" />
+                <ScalarProperty Name="marks" ColumnName="marks" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="SMSModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="student_ID" ColumnName="student_ID" />
+                <ScalarProperty Name="student_Name" ColumnName="student_Name" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="phone_NO" ColumnName="phone_NO" />
+                <ScalarProperty Name="blood_Group" ColumnName="blood_Group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Login">
+            <EntityTypeMapping TypeName="SMSModel.User_Login">
+              <MappingFragment StoreEntitySet="User_Login">
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
