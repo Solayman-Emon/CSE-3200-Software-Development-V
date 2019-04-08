@@ -1,0 +1,100 @@
+﻿@model Student_Management_System__SMS_.Models.Admin_Login
+
+@{
+    Layout = null;
+}
+
+<h2><strong>Admin Login</strong></h2>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Solayman">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>SMS User Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstr~/Content/ap theme -->
+    <link href="~/Content/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external~/Content/ css-->
+    <!-- font ic~/Content/on -->
+    <link href="~/Content/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- full ca~/Content/lendar css-->
+    <link href="~/Content/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+    <link href="~/Content/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
+    <!-- easy pi~/Content/e chart-->
+    <link href="~/Content/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+    <!-- owl car~/Content/ousel -->
+    <link rel="s~/Content/tylesheet" href="css/owl.carousel.css" type="text/css">
+    <link href="~/Content/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <!-- Custom ~/Content/styles -->
+    <link rel="s~/Content/tylesheet" href="css/fullcalendar.css">
+    <link href="~/Content/css/widgets.css" rel="stylesheet">
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/style-responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/xcharts.min.css" rel=" stylesheet">
+    <link href="~/Content/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+
+</head>
+
+
+@using (Html.BeginForm("Autherize1", "Login", FormMethod.Post))  // Login is the Controller name
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <div class="row">
+        <div class="col-md-6">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.admin_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.admin_ID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.admin_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="image">
+                <img class="img-responsive" src="~/Content/img/Admin.png" />
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container autosized">
+        <label class="label label-danger">@Html.DisplayFor(model => model.LoginErrorMassage1)</label>
+    </div>
+
+</div>
+
+}
+
+
+
+</html>
