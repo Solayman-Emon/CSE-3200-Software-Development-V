@@ -63,7 +63,8 @@ namespace Student_Management_System__SMS_.Controllers
                 else
                 {
                     Session["admin_ID"] = adminDetails.admin_ID;
-                    return RedirectToAction("Admin", "Admin");
+                     //return RedirectToAction("Admin", "Admin");
+                     return Redirect("~/WebForm2.aspx");
                 }
 
             }
