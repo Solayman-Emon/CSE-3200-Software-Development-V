@@ -12,12 +12,14 @@ namespace Student_Management_System__SMS_.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Admin_Login
     {
         [DisplayName("ADMIN ID")]
         public int admin_ID { get; set; }
         [DisplayName("PASSWORD")]
+        [DataType(DataType.Password)]
         public string password { get; set; }
         public string LoginErrorMassage1 { get; set; }
     }
