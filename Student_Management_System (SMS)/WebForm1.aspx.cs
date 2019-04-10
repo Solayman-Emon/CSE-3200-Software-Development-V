@@ -17,7 +17,7 @@ namespace Student_Management_System__SMS_
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 sqlConnection.Open();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * from Students", sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * from Students ", sqlConnection);
                 DataTable dt = new DataTable();
                 sqlDataAdapter.Fill(dt);
                 GridView3.DataSource = dt;
